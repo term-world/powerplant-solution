@@ -38,6 +38,22 @@ Here's a list of broad goals, some of which we'll complete together:
 * design ways to generate power that leverage the strenghts of the sources to generate the most power
 * pursue all of these goals to win a coveted prize for generating the most energy
 
+### Energy sources
+
+`term-world` boasts a mix of `Oil`, `Coal`, `Wind`, and `Solar` power options, available as part of the `resources` module.
+
+|Type |Exhaustion |Energy yield |Amount yielded |
+|`Oil`|Exhaustible|1667 kWh per barrel |5 barrels |
+|`Coal`|Exhaustible|5549 kWh per short ton|2 short tons|
+|`Solar`|Inexhaustible|1.2% panel wattage per second |1 second |
+|`Wind`|Inexhaustible |Various, depending on `blade_size`†, wind speed |1 second |
+
+`†` Maximum blade size is `115` meters; the larger the blade size, the slower the speed
+
+#### Note about `Exhaustibility`
+
+Anything marked `Exhaustible` has a finite limit. At some point, the world runs out. It could happen now, it could happen in a year (or century). We simply don't know.
+
 ### `reflection.md`
 
 Don't forget to finish the `reflection.md` file in the `paperwork` folder!

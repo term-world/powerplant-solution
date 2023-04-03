@@ -1,0 +1,12 @@
+#! /bin/bash
+
+FILES=$(find *reflection.md -not -path group-reflection.md)
+
+for FILE in $FILES; do
+  TODOS=$(cat $FILE | grep "TODO")
+  if [[ -z "$TODOS" ]]; then
+    :
+  else
+    exit 1
+  fi
+done
