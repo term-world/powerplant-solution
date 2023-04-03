@@ -26,9 +26,12 @@
 # Guarantee they use more than one type
 - description: Neighborhood diversified power generation to use at least one inexhaustible
   category: Diversification
-  check: ExecuteCommand
+  check: MatchCommandFragment
   options:
     command: "jq '.wind > 0 or .solar > 0' src/.battery"
+    fragment: "true"
+    count: 1
+    exact: true
 - src/SolarField.py:
   - description: SolarField sets the wattage property of the solar panel
     category: Diversification
