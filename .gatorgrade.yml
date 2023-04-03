@@ -20,3 +20,140 @@
       fragment: "TODO"
       count: 0
       exact: true
+# Guarantee they use more than one type
+- description: Neighborhood diversified power generation to use at least one inexhaustible
+  category: Diversification
+  check: ExecuteCommand
+  options:
+    command: "jq '.wind > 0 or .solar > 0' src/.battery"
+- src/SolarField.py:
+  - description: SolarField sets the wattage property of the solar panel
+    category: Diversification
+    check: MatchFileRegex
+    options:
+      regex: "self\\.wattage(\\s)?=(\\s)?[a-zA-Z0-9_]+"
+      count: 1
+      exact: true
+- src/WindFarm.py:
+  - description: WindFarm sets the turbine blade size
+    category: Diversification
+    check: MatchFileRegex
+    options:
+      regex: "self\\.blade_size(\\s)?=(\\s)?[a-zA-Z0-9_]+"
+      count: 1
+      exact: true
+# Ensure that inheritances
+- src/SolarField.py:
+  - description: Inexhaustible source (SolarField) uses inheritance
+    category: Inheritance
+    check: MatchFileRegex
+    options:
+      regex: "class\\s[a-zA-Z0-9]+\\(Solar\\)\\:"
+      count: 1
+      exact: true
+- src/WindFarm.py:
+  - description: Inexhaustible source (WindFarm) uses inheritance
+    category: Inheritance
+    check: MatchFileRegex
+    options:
+      regex: "class\\s[a-zA-Z0-9]+\\(Wind\\)\\:"
+      count: 1
+      exact: true
+- src/SolarField.py:
+  - description: Inexhaustible source (SolarField) calls the super() function to inherit
+    category: Inheritance
+    check: MatchFileRegex
+    options:
+      regex: "super\\(\\)\\.__init__\\(\\)"
+      count: 1
+      exact: true
+- src/WindFarm.py:
+  - description: Inexhaustible source (WindFarm) calls the super() function to inherit
+    category: Inheritance
+    check: MatchFileRegex
+    options:
+      regex: "super\\(\\)\\.__init__\\(\\)"
+      count: 1
+      exact: true
+# Exhaustible sources instantiate appropriate objects
+- src/OilStation.py:
+  - description: Exhaustible source (OilStation) calls Oil object
+    category: Instantiation
+    check: MatchFileRegex
+    options:
+      regex: "[a-zA-Z0-9_]+(\\s)?=(\\s)?Oil\\(\\)"
+      count: 1
+      exact: true
+- src/CoalStation.py:
+  - description: Exhaustible source (CoalStation) calls Oil object
+    category: Instantiation
+    check: MatchFileRegex
+    options:
+      regex: "[a-zA-Z0-9_]+(\\s)?=(\\s)?Coal\\(\\)"
+      count: 1
+      exact: true
+- src/OilStation.py:
+  - description: Exhaustible source (OilStation) contains use method with correct signature
+    category: Methods
+    check: MatchFileRegex
+    options:
+      regex: "def\\suse\\(self\\):"
+      count: 1
+      exact: true
+- src/CoalStation.py:
+  - description: Exhaustible source (CoalStation) contains use method with correct signature
+    category: Methods
+    check: MatchFileRegex
+    options:
+      regex: "def\\suse\\(self\\):"
+      count: 1
+      exact: true
+# Control room checks
+- src/main.py:
+  - description: main.py imports all available power sources (even if not using them)
+    category: Control Room
+    check: MatchFileRegex
+    options:
+      regex: "from\\s[a-zA-Z0-9]+\\simport\\s[a-zA-Z0-9_]+"
+      count: 4
+      exact: false
+- src/main.py:
+  - description: main.py creates function for charge_battery with complete signature
+    category: Control Room
+    check: MatchFileRegex
+    options:
+      regex: "def\\scharge_battery\\([a-zA-Z0-9_\\s\\:=\\{\\},]{0,}\\)(\\s->)?\\:"
+      count: 1
+      exact: true
+- src/main.py:
+  - description: main.py calls charge_battery with complete call
+    category: Control Room
+    check: MatchFileRegex
+    options:
+      regex: "charge_battery\\([a-zA-Z0-9_\\s\\:=\\{\\},]{0,}\\)"
+      count: 1
+      exact: true
+- src/main.py:
+  - description: main.py uses JSON library to read from .battery
+    category: Control Room
+    check: MatchFileRegex
+    options:
+      regex: "json.load\\([a-zA-Z0-9_]+\\)"
+      count: 1
+      exact: false
+- src/main.py:
+  - description: main.py uses JSON library to write to .battery
+    category: Control Room
+    check: MatchFileRegex
+    options:
+      regex: "json.dump\\([a-zA-Z0-9_,\\s]+\\)"
+      count: 1
+      exact: false
+- src/main.py:
+  - description: main.py calls either the power or energy property
+    category: Control Room
+    check: MatchFileRegex
+    options:
+      regex: "\\.energy|\\.power"
+      count: 1
+      exact: false

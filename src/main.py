@@ -1,8 +1,8 @@
 import json
 
-from SolarPlant import SolarPanel
-from OilPlant import OilGenerator
-from CoalPlant import CoalGenerator
+from SolarField import SolarPanel
+from OilStation import OilGenerator
+from CoalStation import CoalGenerator
 from WindFarm import WindTurbine
 
 def charge_battery(energy: dict = {}):
