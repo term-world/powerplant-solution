@@ -23,22 +23,24 @@ In this activity, you'll:
 * observe strange, but productive, `object` behaviors
 * begin to explore the concept of `object` `inheritance`, a way to "template" mulitple objects at once
 
-
 ### Previous Learning Objectives
 
 If you wish to review previous learning objectives from our assignments, you can visit the [`Syllabus`](https://chompe.rs/100-syllabus) for helpful information. However, it's also important to make an effort to retain what we have covered thus far as we progress through the course sections of the Readme might be taken out.
 
 ## Completing `powerplant` content
 
-For this activity, you'll need to complete the following steps for all of your `woodshop` items, creating a (somewhat) autonomous factory.
+For our final regular activity, we have some decisions to make: some about design and some about more-or-less environmentally-friendly options. This task is all about choices. 
 
-For `Saw.py`, `BookshelfPlans.py`, `ChairPlans.py`, and `TablePlans.py`, you do not need to do anything. For convenience, though:
+Here's a list of broad goals, some of which we'll complete together:
 
-
+* survey the array of fuel options and how to do use each
+* charge a `.battery` file, logging how much each energy source generates
+* design ways to generate power that leverage the strenghts of the sources to generate the most power
+* pursue all of these goals to win a coveted prize for generating the most energy
 
 ### `reflection.md`
 
-Don't forget to finish the `reflection.md` file in the `clean-up` folder!
+Don't forget to finish the `reflection.md` file in the `paperwork` folder!
 
 ## Improvement suggestions
 
@@ -46,14 +48,16 @@ Here are some suggestions for improvements you can, **but are not limited to** u
 
 |Improvement Suggestions |Description        |
 |:-----------------------|:------------------|
+|Objects            |Create an object that uses stored power |
+|Objects            |Create an object hooked up directly to a power source |
+|Conditional statements |Create an interface to choose power sources to use |
+|Iteration          |Automate power generation based on time, demand, or other reason |
+|Data visualization           |Create a dashboard (using `rich`) to visualize the contents of the `.battery`|
+|Data structures/Objects    |Display the weather conditions underlying the renewable sources†|
+|Objects            |Find and use the secret power source† |
+|Data visualization |Create a poster about the `term-world` Energy Development and Industrial Utility Management supply chain |
 
-
-
-`†` If possible, also make a way to, for example, _quarry_ stone?
-
-`††` Here, you shouldn't need to know how many board feet are required; the plans _tell_ you
-
-`†††` The menu must also _work_ (i.e. if an object is chosen, the factory should go to work)
+`†` _Probably_ uses the `dir()` function to begin to explore `object`s
 
 **Make sure to link your issue with the pull request you used to make your actually improvement.**
 
