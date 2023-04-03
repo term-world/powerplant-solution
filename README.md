@@ -43,6 +43,7 @@ Here's a list of broad goals, some of which we'll complete together:
 `term-world` boasts a mix of `Oil`, `Coal`, `Wind`, and `Solar` power options, available as part of the `resources` module.
 
 |Type |Exhaustion |Energy yield |Amount yielded |
+|:----|:----------|:------------|:--------------|
 |`Oil`|Exhaustible|1667 kWh per barrel |5 barrels |
 |`Coal`|Exhaustible|5549 kWh per short ton|2 short tons|
 |`Solar`|Inexhaustible|1.2% panel wattage per second |1 second |
@@ -50,9 +51,38 @@ Here's a list of broad goals, some of which we'll complete together:
 
 `†` Maximum blade size is `115` meters; the larger the blade size, the slower the speed
 
+#### Properties and methods of each source (by category)
+
+##### Exhaustibles
+
+Each exhaustible should use:
+
+* an `energy` _property_ to store energy generated
+* a `use` method to access the energy in the resource tapped
+
+##### Inexhaustibles
+
+###### `WindFarm`
+
+* a `blade_size` property to set the size of the turbine blade
+* a `super().__init__()` call to access properties and methods of the `Wind`
+
+###### `SolarField`
+
+* a `wattage` property to set the maximum wattage of the solar panel
+* a `super().__init__()` call to access properties and methods of `Solar` energy
+
 #### Note about `Exhaustibility`
 
+##### Exhaustibles
+
 Anything marked `Exhaustible` has a finite limit. At some point, the world runs out. It could happen now, it could happen in a year (or century). We simply don't know.
+
+##### Inexhaustibles
+
+While true that these sources do not have a limit, they can only be "harvested" during the right conditions (i.e. a wind greater than `5` mph or on sunny days that the sun is _actually_ showing). The `term-world` news page is a great source for this information. 
+
+To call up the news page, use `CTRL + SHIFT + P` and type `menu` to filter the results. `term-world Menu: Show` should appear as an option.
 
 ### `reflection.md`
 

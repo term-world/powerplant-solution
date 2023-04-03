@@ -25,3 +25,21 @@
 **FOR OPERATIONS COMPLETED INDIVIDUALLY, BE SURE TO ALSO COMPLETE THE `BASIC ITEMIZED GUIDE for BRIEFING RECENT OPERATIONS` FORM.**
 
 ## BASIC OPERATIONS CHARACTERISTICS
+
+### Describe your neighborhood's energy strategy.
+
+TODO
+
+### What difficulties arose, if any? How did you solve them?
+
+TODO
+
+### Describe your understanding of `inheritance`.
+
+TODO
+
+### Elaborate on how this week's work with objects was consistent with what you already knew.
+
+TODO
+
+**YOUR MAYOR THANKS YOU FOR TAKING THE TIME TO FILL OUT THIS BASIC ITEMIZED GUIDE FOR BRIEFING RECENT OPERATIONS.**

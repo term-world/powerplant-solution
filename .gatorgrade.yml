@@ -7,11 +7,14 @@
       fragment: "TODO"
       count: 0
       exact: true
-- description: No TODO markers left in any individual reflection
-  category: Paperwork
-  check: ExecuteCommand
-  options:
-    command: "cd paperwork && bash .todos"
+- paperwork/group-reflection.md:
+  - description: All checkboxes checked in group-reflection.md
+    category: Paperwork
+    check: MatchFileFragment
+    options:
+      fragment: "- [ ]"
+      count: 0
+      exact: true
 - src/main.py:
   - description: No TODO markers left in the main.py file
     category: Control Room
